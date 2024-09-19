@@ -16,4 +16,4 @@ if __name__ == '__main__':
 
 ```
 # Author
-Pri Anton Subardio dan Hugo AB
+Pri Anton Subardio, Prita dan Hugo AB
