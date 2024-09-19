@@ -7,4 +7,4 @@ This package will scrape from [BMKG](https://bmkg.go.id/) to get latest quake ha
 This package will use BeautifulSoup4 and Requests, to produce output in the form of JSON that is ready to be used in web of mobile applications
 
 # Author
-Pri Anton Subardio
+Pri Anton Subardio dan Hugo AB
