@@ -80,5 +80,6 @@ def tampilkan_data(result):
     print(f"Dirasakan: {result['dirasakan']}")
 
 if __name__ == '__main__':
+    print('Deskripsi package', description)
     result = ekstraksi_data()
     tampilkan_data(result)
