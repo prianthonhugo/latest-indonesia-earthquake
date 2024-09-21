@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from docutils.nodes import description
+# from docutils.nodes import description
 
 """
 Method = fungsi
