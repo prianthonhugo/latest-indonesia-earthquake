@@ -1,10 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
+"""
+Method = fungsi
+Field / Attribute = variabel
+"""
 
 class GempaTerkini:
-    def __init__(self):
+    def __init__(self, url):
         self.description = 'To get the latest earthquake in Indonesia from BMKG.go.id'
         self.result = None
+        self.url = url
 
 
     def ekstraksi_data(self):
@@ -19,7 +24,7 @@ class GempaTerkini:
         :return:
         """
         try:
-            content = requests.get('https://bmkg.go.id/')
+            content = requests.get(self.url)
         except Exception:
             return None
 
@@ -88,8 +93,12 @@ class GempaTerkini:
         self.tampilkan_data()
 
 if __name__ == '__main__':
-    gempa_di_indonesia = GempaTerkini()
-    print('Deskripsi package', gempa_di_indonesia.description)
+    gempa_di_indonesia = GempaTerkini('https://bmkg.go.id/')
+    print('Deskripsi class GempaTerkini', gempa_di_indonesia.description)
     gempa_di_indonesia.run()
+
+    gempa_di_dunia = GempaTerkini('https://bmkg.go.id/')
+    print('Deskripsi class GempaTerkini', gempa_di_dunia.description)
+    gempa_di_dunia.run()
     # gempa_di_indonesia.ekstraksi_data()
     # gempa_di_indonesia.tampilkan_data()
