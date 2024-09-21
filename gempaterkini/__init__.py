@@ -1,18 +1,44 @@
 import requests
 from bs4 import BeautifulSoup
+from docutils.nodes import description
+
 """
 Method = fungsi
 Field / Attribute = variabel
+Constructor = method yang dipanggil pertama kali saat object diciptakan. Gunakan untuk mendeklarasikan semua field pada class ini
 """
 
-class GempaTerkini:
-    def __init__(self, url):
-        self.description = 'To get the latest earthquake in Indonesia from BMKG.go.id'
+class Bencana:
+    def __init__(self, url, description):
+        self.description = description
         self.result = None
         self.url = url
 
+    def tampilkan_keterangan(self):
+        print(self.description)
 
-    def ekstraksi_data(self):
+    def scraping_data(self):
+        print('scraping_data not yet implemented')
+
+    def tampilkan_data(self):
+        print('tampilkan_data not yet implemented')
+
+    def run(self):
+        self.scraping_data()
+        self.tampilkan_data()
+
+class BanjirTerkini(Bencana):
+    def __init__(self, url):
+        super(BanjirTerkini, self).__init__(url, 'NOT YET IMPLEMENTED, but it should return last flood in Indonesia')
+
+    def tampilkan_keterangan(self):
+        print(f'UNDER CONSTRUCTION {self.description}')
+
+class GempaTerkini(Bencana):
+    def __init__(self, url):
+        super(GempaTerkini, self).__init__(url, 'To get the latest earthquake in Indonesia from BMKG.go.id')
+
+    def scraping_data(self):
         """
         Tanggal: 17 September 2024
         Waktu: 08:15:21 WIB
@@ -88,17 +114,25 @@ class GempaTerkini:
         print(f"Lokasi: {self.result['lokasi']}")
         print(f"Dirasakan: {self.result['dirasakan']}")
 
-    def run(self):
-        self.ekstraksi_data()
-        self.tampilkan_data()
+
+# class BanjirTerkini(Bencana):
 
 if __name__ == '__main__':
     gempa_di_indonesia = GempaTerkini('https://bmkg.go.id/')
-    print('Deskripsi class GempaTerkini', gempa_di_indonesia.description)
+    gempa_di_indonesia.tampilkan_keterangan()
     gempa_di_indonesia.run()
 
-    gempa_di_dunia = GempaTerkini('https://bmkg.go.id/')
-    print('Deskripsi class GempaTerkini', gempa_di_dunia.description)
-    gempa_di_dunia.run()
+    banjir_di_indonesia = BanjirTerkini('NOT YET')
+    banjir_di_indonesia.tampilkan_keterangan()
+    banjir_di_indonesia.run()
+
+    daftar_bencana = [gempa_di_indonesia, banjir_di_indonesia]
+    print('\nSemua bencana yang ada')
+    for bencana in daftar_bencana:
+        bencana.tampilkan_keterangan()
+
+    # gempa_di_dunia = GempaTerkini('https://bmkg.go.id/')
+    # print('Deskripsi class GempaTerkini', gempa_di_dunia.description)
+    # gempa_di_dunia.run()
     # gempa_di_indonesia.ekstraksi_data()
     # gempa_di_indonesia.tampilkan_data()
